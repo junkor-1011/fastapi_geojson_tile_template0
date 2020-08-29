@@ -6,6 +6,7 @@ import pathlib
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse, HTMLResponse
 
 from .routers import (
     tiles,
@@ -40,7 +41,7 @@ def create_app():
 app = create_app()
 
 
-@app.get('/')
+@app.get('/', response_class=HTMLResponse)
 async def site_root():
     """root"""
-    return {"message": "Hello, WORLD!"}
+    return RedirectResponse("/client")
