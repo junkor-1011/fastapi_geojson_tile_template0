@@ -50,26 +50,26 @@ async def site_root():
     return RedirectResponse("/client")
 
 
-@app.get("/test.{ext}")
-async def test_mono_geojson(
-    ext: str = "geojson",
-) -> dict:
-    """
-    return GeoJSON
-    """
-    # ext: json / geojson
-    if (ext not in ["json", "geojson"]):
-        raise HTTPException(
-            status_code=404,
-            detail="'ext' should be json or geojson"
-        )
+# @app.get("/test.{ext}")
+# async def test_mono_geojson(
+#     ext: str = "geojson",
+# ) -> dict:
+#     """
+#     return GeoJSON
+#     """
+#     # ext: json / geojson
+#     if (ext not in ["json", "geojson"]):
+#         raise HTTPException(
+#             status_code=404,
+#             detail="'ext' should be json or geojson"
+#         )
 
-    # test data
-    gdf = gdf_testdata.copy()
+#     # test data
+#     gdf = gdf_testdata.copy()
 
-    return json.loads(
-        gdf.to_json()
-    )
+#     return json.loads(
+#         gdf.to_json()
+#     )
 
 
 @app.get("/tiles/test/{z}/{x}/{y}.geojson")
