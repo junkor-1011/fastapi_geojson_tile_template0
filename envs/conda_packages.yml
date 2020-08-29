@@ -1,28 +1,15 @@
-name: fastapi_vectortilelayer
+name: fastapi_vectortilelayer_slim
 channels:
   - conda-forge
   - defaults
 dependencies:
   # core
   - python==3.7.*
-  - pip
   # FastAPI
   - fastapi
   - uvicorn
-  # DB
-  - sqlalchemy
-  - geoalchemy2
-  - alembic
-  - mongoengine
   # for handling GeoSpatial data
   - pandas>=1.1
   - geopandas>=0.8
   - gdal==3.0.*
   - shapely
-  # debug
-  - python-language-server
-  - nodejs
-  - pip:
-    # mvt, buf
-    - mapbox-vector-tile
-    - geobuf
