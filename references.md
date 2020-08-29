@@ -14,6 +14,7 @@ Reference & Usefull Links
 
 - [Tile numbers to lon.lat. (Python)](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_numbers_to_lon..2Flat._2)
 
+
 ## [国土地理院ベクトルタイル提供実験](https://github.com/gsi-cyberjapan/vector-tile-experiment)
 
 全般的に参考になる
@@ -23,10 +24,29 @@ Reference & Usefull Links
     - 地図上でどのエリアがどの`{z}/{x}/{y}`になるのか分かるので、APIのデバッグなどにも便利
 
 
+## Format
 
-## Leaflet (Visualization)
+### GeoJSON
+
+- https://s.kitazaki.name/docs/geojson-spec-ja.html
+- https://docs.geolonia.com/geojson/
+- https://gis-oer.github.io/gitbook/book/materials/web_gis/GeoJSON/GeoJSON.html
+
+### protobuf
+
+ext: `.mvt` or `.pbf`
+
+- https://docs.mapbox.com/vector-tiles/specification/
+- https://gdal.org/drivers/vector/mvt.html
+- https://github.com/tilezen/mapbox-vector-tile#encoding
+    - 座標はそのままの緯度経度ではなく、各タイル内での相対座標(defaultではx, y方向で`[0, 4096)`の整数値)
+
+
+## Visualization
 
 地図上で意図通りに描画・表示出来ることを持って製作したタイルサーバーの挙動を確認
+
+### Leaflet
 
 - https://qiita.com/frogcat/items/97ab41c6675213b1a3f4
 - https://qiita.com/frogcat/items/3d795c5cbe026c372bf4
@@ -47,3 +67,27 @@ PostGISを利用したgeometry型のカラムを持つテーブル(Model)を使�
 ### tornado + PostGIS
 
 - https://qiita.com/R_28/items/2fe16a1f37e2e46b135c
+
+
+---
+
+## Others
+
+直接は関係無いが、有用な参考情報
+
+### staticなベクトルタイル
+
+- [mapbox/tippecanoe](https://github.com/mapbox/tippecanoe)
+    - 静的なバイナリベクトルタイル(`pbf/mvt`)の生成が出来る
+
+
+### geobuf
+
+動的なタイルサーバーは負荷やレスポンス時間の問題が考えられるため、この辺りの手法が現実的かもしれない
+
+- https://shimz.me/blog/leaflet-js/5574
+- https://observablehq.com/@saifulazfar/geobuf-l-vectorgrid-slicer-with-leaflet
+- https://observablehq.com/@saifulazfar/geobuf-with-leaflet?collection=@saifulazfar/map
+- https://observablehq.com/@saifulazfar/geobuf-with-importable-map-control-from-tmcw-map?collection=@saifulazfar/map
+- https://github.com/mapbox/geobuf
+    - [using in python](https://github.com/pygeobuf/pygeobuf)
