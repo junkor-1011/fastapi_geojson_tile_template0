@@ -1,0 +1,5 @@
+*.geojson
+*.shp
+*.pickle*
+*.pkl*
+*parquet
