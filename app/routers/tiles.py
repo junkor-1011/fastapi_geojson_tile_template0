@@ -7,15 +7,14 @@ import math
 # import pathlib
 from typing import (
     Optional,
-    List,
+    # List,
 )
 
 from fastapi import (
     APIRouter,
     HTTPException,
-    Response,
+    # Response,
 )
-import pandas as pd
 import geopandas as gpd
 import shapely.geometry
 # import mapbox_vector_tile
@@ -26,7 +25,7 @@ router = APIRouter()
 
 
 # const
-EXT_DATA_PATH = "./app/data/"   # TMP
+EXT_DATA_PATH = "./data/"   # TMP
 
 # test data
 gdf_testdata = gpd.read_file(EXT_DATA_PATH + "test.geojson")
